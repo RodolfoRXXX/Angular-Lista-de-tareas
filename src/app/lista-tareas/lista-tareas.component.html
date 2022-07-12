@@ -1,0 +1,17 @@
+<main class="container">
+    <ul class="list-group w-50 mx-auto">
+        <li class="list-group-item text-center active">Lista de tareas</li>
+        <li class="list-group-item" *ngFor="let tarea of tareas">
+            <input type="checkbox" class="form-check-input me-2" [checked]="tarea.done" (click)="cambiarEstadotarea(tarea)">
+            <span *ngIf="tarea.done"><s>{{tarea.nombre}}</s></span>
+            <span *ngIf="!tarea.done">{{tarea.nombre}}</span>
+            <button class="btn btn-danger float-end" (click)="eliminarTarea(tarea.id)">-</button>
+        </li>
+        <li class="list-group-item">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Ingrese una nueva tarea" (keyup)="modificarTarea($event)" [value]="tareaNueva">
+                <button class="btn btn-outline-success float-end" (click)="agregarTareaNueva()">Agregar</button>
+            </div>
+        </li>
+    </ul>
+</main>
